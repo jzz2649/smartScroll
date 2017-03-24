@@ -26,7 +26,7 @@ function smartScroll(container, selectorScrollable) {
 
     data.posY = events.pageY;
     data.scrollY = selectorScrollable.scrollTop;
-    data.maxscroll = selectorScrollable.scrollHeight - container.clientHeight;
+    data.maxscroll = selectorScrollable.scrollHeight - selectorScrollable.clientHeight;
   });
 
   container.addEventListener('touchmove', function() {
