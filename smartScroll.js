@@ -60,6 +60,9 @@ function smartScroll(container, selectorScrollable) {
     var length = children.length;
     var child_len = 0;
     for (var i = 0; i < length; i++) {
+      if (children[i] === child) {
+        return true;
+      }
       if (children[i].firstElementChild) {
         child_len = children[i].children.length;
         for (var j = 0; j < child_len; j++) {
@@ -67,9 +70,6 @@ function smartScroll(container, selectorScrollable) {
             return true;
           }
         }
-      }
-      if (children[i] === child) {
-        return true;
       }
     }
     return false;
