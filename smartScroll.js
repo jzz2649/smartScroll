@@ -14,9 +14,9 @@ function smartScroll(container, selectorScrollable) {
     var events = event.touches[0] || event;
     var elTarget = event.target;
 
-    if (elTarget === selectorScrollable || isChild(selectorScrollable, elTarget)) {
+    if (selectorScrollable.contains(elTarget)) {
       nScroll = false;
-    } else if (elTarget === container || isChild(container, elTarget)) {
+    } else if (container.contains(elTarget)) {
       nScroll = true;
     }
 
@@ -54,24 +54,4 @@ function smartScroll(container, selectorScrollable) {
   });
 
   container.isScroll = true;
-
-  function isChild(self, child){
-    var children = self.children;
-    var length = children.length;
-    var child_len = 0;
-    for (var i = 0; i < length; i++) {
-      if (children[i] === child) {
-        return true;
-      }
-      if (children[i].firstElementChild) {
-        child_len = children[i].children.length;
-        for (var j = 0; j < child_len; j++) {
-          if (isChild(children[i], child)) {
-            return true;
-          }
-        }
-      }
-    }
-    return false;
-  }
 }
